@@ -1,6 +1,6 @@
-package model;
+package model.dao;
 
-public class Juridica extends Pessoa{
+public class Juridica extends Pessoa {
     private String cnpj;
 
     public String getCnpj() {

@@ -3,12 +3,12 @@ package connection;
 import java.sql.*;
 
 public class ConnectionDB {
-    private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String URL = "jdbc:mysql://localhost:3306/empresa";
-    private final String USER = "root";
-    private final String PASSWORD = "admin";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/empresa";
+    private static final String USER = "root";
+    private static final String PASSWORD = "admin";
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         try {
             Class.forName(DRIVER);
             return DriverManager.getConnection(URL,USER,PASSWORD);

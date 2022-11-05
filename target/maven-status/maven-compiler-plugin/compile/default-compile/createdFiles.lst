@@ -4,4 +4,4 @@ model\FuncPessoa.class
 model\Endereco.class
 model\Fisica.class
 model\Juridica.class
-br\com\macias\Cadastro.class
+br\com\macias\PessoaFisica.class

@@ -1,12 +1,24 @@
-package model;
+package model.dao;
 
-public class Pessoa implements FuncPessoa{
+import model.bean.Endereco;
+import model.bean.FuncPessoa;
+
+public class Pessoa implements FuncPessoa {
+    private String id;
     private String nome;
     private String email;
     private String senha;
     private String numeroCelular;
     private String numeroTelefone;
     private Endereco endereco;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
