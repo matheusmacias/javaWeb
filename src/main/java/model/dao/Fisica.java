@@ -84,4 +84,5 @@ public class Fisica extends Pessoa {
             ConnectionFactory.closeConnection(con,stmt,rs);
         }
     }
+
 }

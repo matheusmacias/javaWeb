@@ -1,7 +1,13 @@
 package model.dao;
 
+import connection.ConnectionFactory;
 import model.bean.Endereco;
 import model.bean.FuncPessoa;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Pessoa implements FuncPessoa {
     private int id;
@@ -85,6 +91,23 @@ public class Pessoa implements FuncPessoa {
 
     @Override
     public void signInAccout() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement("SELECT email,senha FROM pessoa WHERE email=? AND senha=?");
+            stmt.setString(1,getEmail());
+            stmt.setString(2,getSenha());
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                System.out.println("Login correto");
+            }else{
+                System.out.println("Login incorreto");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
