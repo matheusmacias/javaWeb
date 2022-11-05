@@ -1,7 +1,11 @@
 package model.dao;
 
 import connection.ConnectionFactory;
+import model.bean.Constantes;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +31,8 @@ public class Fisica extends Pessoa {
         this.genero = genero;
     }
     @Override
-    public void createAccout() {
+    public void createAccout(HttpServletResponse resp) throws IOException {
+        PrintWriter writer = resp.getWriter();
         boolean check = true;
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -73,9 +78,9 @@ public class Fisica extends Pessoa {
                 stmt.setString(1,getCpf());
                 stmt.setInt(2,getId());
                 stmt.executeUpdate();
-
+                writer.println(Constantes.CONTA_PF_CRIADA);
             }else{
-                System.out.println("E-mail ou cpf já está cadastrado no sistema! tente outro");
+                writer.println(Constantes.CADASTRO_PF_FAIL_CPF_EMAIL);
             }
 
         } catch (SQLException e) {

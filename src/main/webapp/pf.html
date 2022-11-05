@@ -72,19 +72,19 @@
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    $('.signUp').submit(function(){
-    var dados = $(this).serialize();
-    $.ajax({
+    $('.signUp').submit(function () {
+      var dados = $(this).serialize();
+      $.ajax({
         url: '/javaWeb/cadastroPF',
         type: 'POST',
         data: dados,
-        success: function(data) {
+        success: function (data) {
           $('.result').html(data);
         }
+      });
+      return false;
     });
-    return false;
-});
-</script>
+  </script>
 </body>
 
 </html>

@@ -1,9 +1,14 @@
 package model.dao;
 
 import connection.ConnectionFactory;
+import model.bean.Constantes;
 import model.bean.Endereco;
 import model.bean.FuncPessoa;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Watchable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,7 +80,7 @@ public class Pessoa implements FuncPessoa {
     }
 
     @Override
-    public void createAccout() {
+    public void createAccout(HttpServletResponse resp) throws IOException {
 
     }
 
@@ -90,7 +95,9 @@ public class Pessoa implements FuncPessoa {
     }
 
     @Override
-    public void signInAccout() {
+    public void signInAccout(HttpServletResponse resp) throws IOException {
+        PrintWriter writer = resp.getWriter();
+
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -100,13 +107,15 @@ public class Pessoa implements FuncPessoa {
             stmt.setString(2,getSenha());
             rs = stmt.executeQuery();
             if(rs.next()){
-                System.out.println("Login correto");
+                writer.println(Constantes.LOGIN_SUCESSO);
             }else{
-                System.out.println("Login incorreto");
+                writer.println(Constantes.LOGIN_ERRADO);
             }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            ConnectionFactory.closeConnection(con,stmt,rs);
         }
 
     }

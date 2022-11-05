@@ -6,13 +6,14 @@ import model.dao.Fisica;
 import model.dao.Juridica;
 import model.dao.Pessoa;
 
+import javax.servlet.http.HttpServletResponse;
+
 public class Test {
     public static void main(String[] args) {
 
         Pessoa pessoa = new Pessoa();
         pessoa.setEmail("matheusmacias3@gmail.com");
         pessoa.setSenha("matheus123");
-        pessoa.signInAccout();
 
 
         //Endereco enderecoPessoa = new Endereco();
