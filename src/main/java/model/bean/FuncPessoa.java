@@ -2,10 +2,10 @@ package model.bean;
 
 public interface FuncPessoa {
 
-    void CreateAccout();
-    void UpdateAccout();
-    void DeleteAccout();
-    void SignInAccout();
-    void SignOutAccout();
+    void createAccout();
+    void updateAccout();
+    void deleteAccout();
+    void signInAccout();
+    void signOutAccout();
 
 }

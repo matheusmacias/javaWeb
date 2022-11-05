@@ -4,7 +4,7 @@ import model.bean.Endereco;
 import model.bean.FuncPessoa;
 
 public class Pessoa implements FuncPessoa {
-    private String id;
+    private int id;
     private String nome;
     private String email;
     private String senha;
@@ -12,11 +12,11 @@ public class Pessoa implements FuncPessoa {
     private String numeroTelefone;
     private Endereco endereco;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    protected void setId(int id) {
         this.id = id;
     }
 
@@ -69,27 +69,27 @@ public class Pessoa implements FuncPessoa {
     }
 
     @Override
-    public void CreateAccout() {
+    public void createAccout() {
 
     }
 
     @Override
-    public void UpdateAccout() {
+    public void updateAccout() {
 
     }
 
     @Override
-    public void DeleteAccout() {
+    public void deleteAccout() {
 
     }
 
     @Override
-    public void SignInAccout() {
+    public void signInAccout() {
 
     }
 
     @Override
-    public void SignOutAccout() {
+    public void signOutAccout() {
 
     }
 }

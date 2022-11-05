@@ -1,6 +1,6 @@
 package model.dao;
 
-import connection.ConnectionDB;
+import connection.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,9 +27,9 @@ public class Fisica extends Pessoa {
         this.genero = genero;
     }
     @Override
-    public void CreateAccout() {
+    public void createAccout() {
         boolean check = true;
-        Connection con = ConnectionDB.getConnection();
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -41,7 +41,6 @@ public class Fisica extends Pessoa {
             if(rs.next()){
                 check = false;
             }
-
             stmt = con.prepareStatement("SELECT cpf from fisica WHERE cpf = ?");
             stmt.setString(1,getCpf());
             rs = stmt.executeQuery();
@@ -51,7 +50,7 @@ public class Fisica extends Pessoa {
             }
 
             if(check == true){
-                stmt = con.prepareStatement("INSERT INTO usuario(nome,email,senha,numeroCelular,numeroTelefone,cep,Rua,complemento,numeroEnd)" +
+                stmt = con.prepareStatement("INSERT INTO pessoa(nome,email,senha,numeroCelular,numeroTelefone,cep,Rua,complemento,numeroEnd)" +
                                             "VALUES(?,?,?,?,?,?,?,?,?)");
                 stmt.setString(1,getNome());
                 stmt.setString(2,getEmail());
@@ -64,6 +63,17 @@ public class Fisica extends Pessoa {
                 stmt.setString(9,getEndereco().getNumero());
                 stmt.executeUpdate();
 
+                stmt = con.prepareStatement("SELECT id from pessoa WHERE email = ?");
+                stmt.setString(1,getEmail());
+                rs = stmt.executeQuery();
+                if(rs.next()){
+                    setId(rs.getInt("id"));
+                }
+                stmt = con.prepareStatement("INSERT INTO fisica(cpf,fk_Pessoa_id)VALUES(?,?)");
+                stmt.setString(1,getCpf());
+                stmt.setInt(2,getId());
+                stmt.executeUpdate();
+
             }else{
                 System.out.println("E-mail ou cpf já está cadastrado no sistema! tente outro");
             }
@@ -71,7 +81,7 @@ public class Fisica extends Pessoa {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            ConnectionDB.closeConnection(con,stmt,rs);
+            ConnectionFactory.closeConnection(con,stmt,rs);
         }
     }
 }
