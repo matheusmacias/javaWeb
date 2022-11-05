@@ -1,3 +1,7 @@
+
+.login{display: flex; margin-top: 100px;}
 .signUp{max-width: 450px; margin-top: 30px; }
 .signUp > div{margin: 10px 0px 10px 0px;}
 .endereco{display: flex; width: 100%; gap: 10px;}
+.btn_signup{display: flex; justify-content: space-between;}
+.btn_signup a{text-decoration: none;}
