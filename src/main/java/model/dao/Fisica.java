@@ -78,7 +78,6 @@ public class Fisica extends Pessoa {
                 stmt.setString(1,getCpf());
                 stmt.setInt(2,getId());
                 stmt.executeUpdate();
-                
                 writer.println(Constantes.CONTA_PF_CRIADA);
             }else{
                 writer.println(Constantes.CADASTRO_PF_FAIL_CPF_EMAIL);

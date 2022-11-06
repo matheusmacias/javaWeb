@@ -1,5 +1,6 @@
 package model.servlets;
 
+import model.bean.Validacao;
 import model.dao.Pessoa;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,12 @@ public class PessoaLogin extends HttpServlet {
         Pessoa pessoa = new Pessoa();
         pessoa.setEmail(req.getParameter("email"));
         pessoa.setSenha(req.getParameter("senha"));
-        pessoa.signInAccout(resp);
+        Validacao.minLength(pessoa.getEmail(), 10,"E-mail digitado e invalido!");
+        Validacao.minLength(pessoa.getSenha(), 10,"senha digitada e invalido!");
+
+        if(Validacao.Check(resp)){
+            pessoa.signInAccout(resp);
+        }
+
     }
 }

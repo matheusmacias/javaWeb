@@ -19,5 +19,8 @@ public final class Constantes {
     public final static String CADASTRO_PJ_FAIL_CNPJ_EMAIL = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
             "    E-mail ou cnpj ja esta cadastrado no sistema! tente outro.\n" +
             "  </div>";
+    public final static String DIV_DANGER_BEGIN = "<div class=\"alert alert-danger\" role=\"alert\">\n";
+
+    public final static String DIV_END = "</div>";
 
 }

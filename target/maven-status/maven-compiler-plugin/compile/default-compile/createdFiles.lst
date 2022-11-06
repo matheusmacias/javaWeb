@@ -1,4 +1,5 @@
 model\bean\Constantes.class
 model\servlets\PessoaJuridica.class
 model\servlets\PessoaLogin.class
+model\bean\Validacao.class
 model\servlets\PessoaFisica.class
