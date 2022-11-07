@@ -17,8 +17,9 @@ public class PessoaLogin extends HttpServlet {
         Pessoa pessoa = new Pessoa();
         pessoa.setEmail(req.getParameter("email"));
         pessoa.setSenha(req.getParameter("senha"));
+        /* VALIDAÇÃO DOS INPUT */
         Validacao.minLength(pessoa.getEmail(), 10,"E-mail digitado e invalido!");
-        Validacao.minLength(pessoa.getSenha(), 10,"senha digitada e invalido!");
+        Validacao.minLength(pessoa.getSenha(), 2,"Senha digitada e invalida!");
 
         if(Validacao.Check(resp)){
             pessoa.signInAccout(resp);
