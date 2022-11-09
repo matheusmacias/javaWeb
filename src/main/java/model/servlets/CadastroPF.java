@@ -1,8 +1,9 @@
 package model.servlets;
 
 import model.bean.Endereco;
+import model.bean.Pfisica;
 import model.bean.Validacao;
-import model.dao.Fisica;
+import model.dao.PessoaServiceDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/cadastroPF")
-public class PessoaFisica extends HttpServlet {
-
+public class CadastroPF extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
         Endereco enderecoPessoa = new Endereco();
-        Fisica pessoaf = new Fisica();
+        Pfisica pessoaf = new Pfisica();
         /*info pessoa*/
         pessoaf.setNome(req.getParameter("nomecompleto"));
         pessoaf.setEmail(req.getParameter("email"));
@@ -49,9 +51,11 @@ public class PessoaFisica extends HttpServlet {
         Validacao.minLength(enderecoPessoa.getComplemento(), 4,"O complemento e muito curto, digite mais.");
         Validacao.maxLength(enderecoPessoa.getComplemento(), 100,"No complemento e permitido ate 100 caracteres");
         Validacao.noEqualsLength(enderecoPessoa.getCep(), 8,"Cep e invalido, verifique-o.");
-        /* CRIAR CONTA */
+
         if(Validacao.Check(resp)) {
-            pessoaf.createAccout(resp);
+            PessoaServiceDAO pessoaService = new PessoaServiceDAO();
+            writer.println(pessoaService.createAccout(pessoaf));
         }
+
     }
 }

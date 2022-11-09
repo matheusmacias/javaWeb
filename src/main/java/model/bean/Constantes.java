@@ -13,11 +13,14 @@ public final class Constantes {
     public final static String LOGIN_ERRADO = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
             "    Login incorreto, tente novamente.\n" +
             "  </div>";
-    public final static String CADASTRO_PF_FAIL_CPF_EMAIL = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
-            "    E-mail ou cpf ja esta cadastrado no sistema! tente outro.\n" +
+    public final static String CADASTRO_PF_FAIL_EMAIL = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
+            "    E-mail ja esta cadastrado no sistema! tente outro.\n" +
             "  </div>";
-    public final static String CADASTRO_PJ_FAIL_CNPJ_EMAIL = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
-            "    E-mail ou cnpj ja esta cadastrado no sistema! tente outro.\n" +
+    public final static String CADASTRO_PF_FAIL_CPF = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
+            "    Cpf ja esta cadastrado no sistema! tente outro.\n" +
+            "  </div>";
+    public final static String CADASTRO_PJ_FAIL_CNPJ = "<div class=\"alert alert-danger\" role=\"alert\">\n" +
+            "    Cnpj ja esta cadastrado no sistema! tente outro.\n" +
             "  </div>";
     public final static String DIV_DANGER_BEGIN = "<div class=\"alert alert-danger\" role=\"alert\">\n";
 

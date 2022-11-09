@@ -1,15 +1,13 @@
 package model.bean;
 
 
-import model.servlets.PessoaLogin;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Validacao{
-    PessoaLogin login;
-
+    
     private final static ArrayList<String>  msg = new ArrayList<String>();
     private static boolean status = true;
 

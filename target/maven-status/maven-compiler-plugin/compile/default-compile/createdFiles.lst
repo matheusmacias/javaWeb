@@ -1,5 +1,5 @@
-model\bean\Constantes.class
-model\servlets\PessoaJuridica.class
-model\servlets\PessoaLogin.class
+model\servlets\Login.class
 model\bean\Validacao.class
-model\servlets\PessoaFisica.class
+model\servlets\CadastroPF.class
+model\bean\Constantes.class
+model\servlets\CadastroPJ.class

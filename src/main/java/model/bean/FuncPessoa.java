@@ -5,10 +5,14 @@ import java.io.IOException;
 
 public interface FuncPessoa {
 
-    void createAccout(HttpServletResponse resp) throws IOException;
+    String createAccout(Pessoa pessoa);
+    String updateAccout(Pfisica pessoa);
+    String updateAccout(Pjuridica pessoa);
+    boolean checkCPF(Pfisica pessoa);
+    boolean checkCNPJ(Pjuridica pessoa);
     void updateAccout();
     void deleteAccout();
-    void signInAccout(HttpServletResponse resp) throws IOException;
+    boolean signInAccout(Pessoa pessoa);
     void signOutAccout();
 
 }
