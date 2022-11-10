@@ -49,5 +49,58 @@ public class ConnectionFactory {
         }
 
     }
+    public static boolean insert(String tabela,String colunas, String valores){
+        Connection con = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("INSERT INTO "+tabela+"("+colunas+")VALUES("+valores+")");
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            closeConnection(con,stmt);
+        }
+        return true;
+    }
+
+    public static boolean ckSelect(String colunas, String tabela, String where){
+        Connection con = getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement("SELECT "+colunas+" FROM "+tabela+" WHERE "+where);
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            closeConnection(con,stmt,rs);
+        }
+        return false;
+    }
+
+    public static PreparedStatement pSelect(String colunas, String tabela, String where){
+        Connection con = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("SELECT "+colunas+" FROM "+tabela+" WHERE "+where);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return stmt;
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+

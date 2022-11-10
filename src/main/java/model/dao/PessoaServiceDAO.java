@@ -10,38 +10,39 @@ import model.bean.Pjuridica;
 
 public class PessoaServiceDAO {
 
-    public String createAccout(Pfisica pessoa){
+    public String createAccout(Pfisica pessoa) {
         PessoaRepositoryDAO repositoryDAO = new PessoaRepositoryDAO();
-        if(repositoryDAO.checkCPF(pessoa)){
-            repositoryDAO.createAccout(pessoa);
-            repositoryDAO.updateAccout(pessoa);
-        }else{
-            ConnectionFactory.closeConnection(repositoryDAO.getCon(),repositoryDAO.getStmt(),repositoryDAO.getRs());
+        if (!repositoryDAO.checkCPF(pessoa)) {
+            if (repositoryDAO.createAccout(pessoa)) {
+                repositoryDAO.updateAccout(pessoa);
+            } else {
+                return Constantes.CADASTRO_PF_FAIL_EMAIL;
+            }
+        } else {
             return Constantes.CADASTRO_PF_FAIL_CPF;
         }
-        ConnectionFactory.closeConnection(repositoryDAO.getCon(),repositoryDAO.getStmt(),repositoryDAO.getRs());
-        return null;
+        return Constantes.CONTA_PF_CRIADA;
     }
 
-    public String createAccout(Pjuridica pessoa){
+    public String createAccout(Pjuridica pessoa) {
         PessoaRepositoryDAO repositoryDAO = new PessoaRepositoryDAO();
-        if(repositoryDAO.checkCNPJ(pessoa)){
-            repositoryDAO.createAccout(pessoa);
-            repositoryDAO.updateAccout(pessoa);
-        }else{
-            ConnectionFactory.closeConnection(repositoryDAO.getCon(),repositoryDAO.getStmt(),repositoryDAO.getRs());
+        if (!repositoryDAO.checkCNPJ(pessoa)) {
+            if (repositoryDAO.createAccout(pessoa)) {
+                repositoryDAO.updateAccout(pessoa);
+            } else {
+                return Constantes.CADASTRO_PF_FAIL_EMAIL;
+            }
+        } else {
             return Constantes.CADASTRO_PJ_FAIL_CNPJ;
         }
-        ConnectionFactory.closeConnection(repositoryDAO.getCon(),repositoryDAO.getStmt(),repositoryDAO.getRs());
-        return null;
+        return Constantes.CONTA_PJ_CRIADA;
     }
-    public String signInAccount(Pessoa pessoa){
+
+    public String signInAccount(Pessoa pessoa) {
         PessoaRepositoryDAO repositoryDAO = new PessoaRepositoryDAO();
-        if(repositoryDAO.signInAccout(pessoa)){
-            ConnectionFactory.closeConnection(repositoryDAO.getCon(),repositoryDAO.getStmt(),repositoryDAO.getRs());
+        if (repositoryDAO.signInAccout(pessoa)) {
             return Constantes.LOGIN_SUCESSO;
         }
-        ConnectionFactory.closeConnection(repositoryDAO.getCon(),repositoryDAO.getStmt(),repositoryDAO.getRs());
         return Constantes.LOGIN_ERRADO;
     }
 }
