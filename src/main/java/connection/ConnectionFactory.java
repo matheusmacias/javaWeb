@@ -62,6 +62,16 @@ public class ConnectionFactory {
         }
         return true;
     }
+    public static PreparedStatement pInsert(String tabela,String colunas, String valores){
+        Connection con = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("INSERT INTO "+tabela+"("+colunas+")VALUES("+valores+")");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return stmt;
+    }
 
     public static boolean ckSelect(String colunas, String tabela, String where){
         Connection con = getConnection();

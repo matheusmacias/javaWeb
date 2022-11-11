@@ -14,12 +14,19 @@ public class PessoaRepositoryDAO implements FuncPessoa {
         checkEmail = ConnectionFactory.ckSelect("email", "pessoa", "email='" + pessoa.getEmail() + "'");
 
         if (!checkEmail) {
-            ConnectionFactory.insert("pessoa", "nome,email,senha,numeroCelular,numeroTelefone,cep,Rua,complemento,numeroEnd",
-                    "'" + pessoa.getNome() + "','" + pessoa.getEmail() + "','" + pessoa.getSenha() + "','" + pessoa.getNumeroCelular() + "','" +
-                            pessoa.getNumeroTelefone() + "','" + pessoa.getEndereco().getCep() + "','" + pessoa.getEndereco().getRua() + "','" +
-                            pessoa.getEndereco().getComplemento() + "','" + pessoa.getEndereco().getNumero() + "'");
-
             try {
+                PreparedStatement stmtr = ConnectionFactory.pInsert("pessoa", "nome,email,senha,numeroCelular,numeroTelefone,cep,Rua,complemento,numeroEnd","?,?,?,?,?,?,?,?,?");
+                stmtr.setString(1,pessoa.getNome());
+                stmtr.setString(2,pessoa.getEmail());
+                stmtr.setString(3,pessoa.getSenha());
+                stmtr.setString(4,pessoa.getNumeroCelular());
+                stmtr.setString(5,pessoa.getNumeroTelefone());
+                stmtr.setString(6,pessoa.getEndereco().getCep());
+                stmtr.setString(7,pessoa.getEndereco().getRua());
+                stmtr.setString(8,pessoa.getEndereco().getComplemento());
+                stmtr.setString(9,pessoa.getEndereco().getNumero());
+                stmtr.executeUpdate();
+
                 PreparedStatement stmt = ConnectionFactory.pSelect("id","pessoa","email='"+pessoa.getEmail()+"'");
                 ResultSet rs = stmt.executeQuery();
                 if(rs.next()){

@@ -2,5 +2,4 @@ model\servlets\Login.class
 model\bean\Validacao.class
 model\servlets\CadastroPF.class
 model\bean\Constantes.class
-br\com\macias\ServletTest.class
 model\servlets\CadastroPJ.class
