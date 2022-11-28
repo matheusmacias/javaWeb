@@ -9,6 +9,7 @@ public class Pfisica extends Pessoa{
     }
 
     public void setCpf(String cpf) {
+        Validacao.noEqualsLength(cpf, 11,"Cpf e invalido, verifique-o.");
         this.cpf = cpf;
     }
 }

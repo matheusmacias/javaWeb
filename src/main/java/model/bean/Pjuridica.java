@@ -8,6 +8,7 @@ public class Pjuridica extends Pessoa{
     }
 
     public void setCnpj(String cnpj) {
+        Validacao.noEqualsLength(cnpj, 14,"Cnpj e invalido, verifique-o.");
         this.cnpj = cnpj;
     }
 }

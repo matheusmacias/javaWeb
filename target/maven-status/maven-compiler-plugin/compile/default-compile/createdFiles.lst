@@ -1,5 +1,1 @@
-model\servlets\Login.class
-model\bean\Validacao.class
-model\servlets\CadastroPF.class
-model\bean\Constantes.class
-model\servlets\CadastroPJ.class
+model/bean/Validate.class

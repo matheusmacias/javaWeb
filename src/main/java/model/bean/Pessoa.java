@@ -22,6 +22,9 @@ public class Pessoa {
     }
 
     public void setNome(String nome) {
+        Validacao.minLength(nome, 10,"O nome digitado e muito curto, digite mais.");
+        Validacao.maxLength(nome, 100,"No campo nome e permitido ate 100 caracteres");
+
         this.nome = nome;
     }
 
@@ -30,6 +33,7 @@ public class Pessoa {
     }
 
     public void setEmail(String email) {
+        Validacao.minLength(email, 15,"E-mail invalido");
         this.email = email;
     }
 
@@ -38,6 +42,9 @@ public class Pessoa {
     }
 
     public void setSenha(String senha) {
+        Validacao.minLength(senha, 10,"Sua senha esta fraca, digite mais");
+        Validacao.maxLength(senha, 32,"No campo senha e permitido ate 32 caracteres");
+
         this.senha = senha;
     }
 
@@ -46,6 +53,8 @@ public class Pessoa {
     }
 
     public void setNumeroCelular(String numeroCelular) {
+        Validacao.minLength(numeroCelular, 9,"Numero de celular invalido");
+        Validacao.maxLength(numeroCelular, 13,"Numero de celular invalido");
         this.numeroCelular = numeroCelular;
     }
 
@@ -54,6 +63,8 @@ public class Pessoa {
     }
 
     public void setNumeroTelefone(String numeroTelefone) {
+        Validacao.minLength(numeroTelefone, 9,"Numero de telefone invalido");
+        Validacao.maxLength(numeroTelefone, 13,"Numero de telefone invalido");
         this.numeroTelefone = numeroTelefone;
     }
 
