@@ -1,4 +1,4 @@
-package model.servlets;
+package controller;
 
 import model.bean.Pessoa;
 import model.dao.PessoaServiceDAO;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/login")
-public class Login extends HttpServlet {
+public class ControllerSignIn extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();

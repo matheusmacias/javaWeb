@@ -24,7 +24,6 @@ public class Pessoa {
     public void setNome(String nome) {
         Validacao.minLength(nome, 10,"O nome digitado e muito curto, digite mais.");
         Validacao.maxLength(nome, 100,"No campo nome e permitido ate 100 caracteres");
-
         this.nome = nome;
     }
 

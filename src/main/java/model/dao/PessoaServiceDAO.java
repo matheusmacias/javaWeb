@@ -1,7 +1,6 @@
 package model.dao;
 
 
-import connection.ConnectionFactory;
 import model.bean.Constantes;
 import model.bean.Pessoa;
 import model.bean.Pfisica;
